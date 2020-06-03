@@ -10,8 +10,8 @@ Very modest demo project to demonstrate a very basic Symfony 4 webshop running i
 - The webshop contains no products by default. Use the admin interface to add some.
 - composer can be run inside the php-fpm container, yarn should be run outside (on the Docker host system).
 
-![Example image showing the admin interface](assets/img/prodmgmt.png)
-![Example image showing the customer interface](assets/img/customer.png)
+![Example image showing the admin interface](app/assets/img/prodmgmt.png)
+![Example image showing the customer interface](app/assets/img/customer.png)
 
 ### Running (development time)
 
@@ -29,7 +29,7 @@ yarn encode dev                                     # compile static frontend as
 
 docker-compose build                                # build all containers
 docker-compose run --rm php-fpm composer install    # run composer install in a ephemeral container
-docker-compose up -d mariadb                        # run mysql container in background to allow schema creation/seeding
+docker-compose up -d mariadb                        # run mysql container in background to allow schema creation/seeding, might take a few seconds to start
 docker-compose run --rm php-fpm \
     php bin/console doctrine:schema:update          # update (initial create) of the database schema
 docker-compose run --rm php-fpm \
