@@ -13,9 +13,9 @@ Very modest demo project to demonstrate a very basic Symfony 4 webshop running i
 ![Example image showing the admin interface](app/assets/img/prodmgmt.png)
 ![Example image showing the customer interface](app/assets/img/customer.png)
 
-### Running (development time)
+## Running (development time)
 
-### Prerequisites
+**Prerequisites**:
 - Docker 
 - Docker-compose
 - Yarn
