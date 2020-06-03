@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order #{{ order.getId() }}{% endblock %}
+
+{% block body %}
+  <div class="row offset-top">
+    <div class="col-sm">
+      <h1>Order
+        {{ order.getId() }}</h1>
+      <table class="table table-dark offset-top">
+        <thead>
+          <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Prijs</th>
+            <th scope="col">Aantal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in order.getItems() %}
+            <tr>
+              <td>{{ item.product.getName() }}</td>
+              <td>&euro;{{ item.product.getPrice() }}</td>
+              <td>{{ item.amount }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

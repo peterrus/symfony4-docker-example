@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bestellingen{% endblock %}
+
+{% block body %}
+  <div class="row offset-top">
+    <div class="col-sm">
+      <h1>Bestellingen</h1>
+      {% if orders | length > 0 %}
+        <table class="table table-dark offset-top">
+          <thead>
+            <tr>
+              <th scope="col">Datum</th>
+              <th scope="col">Bedrag</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+              <tr>
+                <td>dummy</td>
+                <td>&euro;{{ order.getPrice() }}</td>
+                <td><a href="/order/{{order.getId()}}">Bekijk</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>Je hebt nog geen bestellingen gedaan</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

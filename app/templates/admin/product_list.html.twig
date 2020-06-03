@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Productbeheer{% endblock %}
+
+{% block body %}
+  <div class="col-sm offset-top">
+    <a class="btn btn-primary" href="/admin/product/create" role="button">Nieuw product</a>
+  </div>
+  <div class="col-sm offset-top">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Naam</th>
+          <th scope="col">Prijs</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+          <tr>
+            <td>{{ product.getId() }}</td>
+            <td>{{ product.getName() }}</td>
+            <td>{{ product.getPrice() }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

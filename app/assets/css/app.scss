@@ -1,0 +1,14 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  color: white;
+  background-image: url('/build/img/dark_geometric.png');
+}
+
+.offset-top {
+  margin-top: $grid-gutter-width;
+}
+
+.productlist-customer__thumbnail {
+  width: 200px;
+}

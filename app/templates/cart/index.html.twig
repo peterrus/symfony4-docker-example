@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Winkelmand - Memcached Powered ;){% endblock %}
+
+{% block body %}
+  <div class="row offset-top">
+    <div class="col-sm">
+      <h1>Winkelmand - Memcached Powered ;)</h1>
+      {% if items | length > 0 %}
+        <table class="table table-dark offset-top">
+          <thead>
+            <tr>
+              <th scope="col">Naam</th>
+              <th scope="col">Prijs</th>
+              <th scope="col">Aantal</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items %}
+              <tr>
+                <td>{{ item.product.getName() }}</td>
+                <td>&euro;{{ item.product.getPrice() }}</td>
+                <td>{{ item.amount }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>Je hebt nog niets in je winkelmand geplaatst. Maak een keuze uit ons
+          <a href="/">ruim assortiment</a>
+        </p>
+      {% endif %}
+    </div>
+  </div>
+  {% if items | length > 0 %}
+  <div class="row">
+    <div class="col-1 col-offset-11">
+      <a class="btn btn-primary" href="/cart/pay" role="button">Betalen</a>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# welcome:
+#   path: /
+#   controller: App\Controller\WelcomeController::index
+
+app_logout:
+  path: /logout

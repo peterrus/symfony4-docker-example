@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      {% block title %}Webshop{% endblock %}
+    </title>
+    {% block stylesheets %}
+      {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+      {{ encore_entry_link_tags('app') }}
+
+      <!-- Renders a link tag (if your module requires any CSS) <link rel="stylesheet" href="/build/app.css"> -->
+    {% endblock %}
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Webshop</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('ROLE_ADMIN') %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/admin/product">Productbeheer</a>
+                  <a class="dropdown-item" href="/admin/delete_all_orders">Alle orders verwijderen</a>
+                  <a class="dropdown-item" href="/build/img/erd.png">ERD</a>
+                </div>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/orders">Mijn bestellingen</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/cart">Winkelmand
+                  <!-- <span class="badge badge-success">4</span> -->
+                </a>
+              </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Uitloggen</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Log in</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      {% for label, messages in app.flashes %}
+        <div class="row offset-top">
+          {% for message in messages %}
+            <div class="alert alert-{{ label }}" role="alert">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+      {% block body %}{% endblock %}
+    </div>
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+  </body>
+</html>

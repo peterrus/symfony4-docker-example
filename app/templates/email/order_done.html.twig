@@ -1,0 +1,24 @@
+<h3>Bedankt voor uw bestelling</h3>
+
+<p>Bestelling {{ order.getId() }} is succesvol afgerond.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Naam</th>
+      <th scope="col">Prijs</th>
+      <th scope="col">Aantal</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in order.getItems() %}
+      <tr>
+        <td>{{ item.product.getId() }}</td>
+        <td>{{ item.product.getName() }}</td>
+        <td>{{ item.product.getPrice() }}</td>
+        <td>{{ item.getAmount() }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
